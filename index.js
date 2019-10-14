@@ -109,11 +109,26 @@ const fi = (function() {
       let r = arr.slice();
       return r.sort((a, b) => {return callback(a) - callback(b)});
     },
-    
-    flatten: function(arr, shallow) {
-      function insertArr(target, position) {
-        
+
+    flatten: function(collection, shallow, newArr=[]) {
+      
+      
+      function unpack(receiver, arr) {
+        for (let val of arr)
+          receiver.push(val)
+        }
+    }
+      
+      if (!Array.isArray(collection)) return newArr.push(collection)
+      if (shallow) {
+        for (let val of collection)
+          Array.isArray(val) ? this.unpack(newArr, val) : newArr.push(val)
+      } else {
+        for (let val of collection) {
+          this.flatten(val, false, newArr)
+        }
       }
+      return newArr
     },
     
     uniq: function(arr, isSorted, callback) {
