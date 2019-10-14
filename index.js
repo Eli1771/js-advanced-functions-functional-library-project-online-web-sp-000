@@ -114,10 +114,10 @@ const fi = (function() {
       
       
       function unpack(receiver, arr) {
-        for (let val of arr)
+        for (let val of arr) {
           receiver.push(val)
         }
-    }
+      }
       
       if (!Array.isArray(collection)) return newArr.push(collection)
       if (shallow) {
