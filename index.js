@@ -111,8 +111,6 @@ const fi = (function() {
     },
 
     flatten: function(collection, shallow, newArr=[]) {
-      
-      
       function unpack(receiver, arr) {
         for (let val of arr) {
           receiver.push(val)
